@@ -22,25 +22,24 @@ Extract this folder anywhere, open PowerShell in it, then:
   HOST machine:
       .\install.ps1 -Role Host
 
-  JOINER machine:
-      .\install.ps1 -Role Joiner -HostIp <host's LAN or VPN IP>
+  JOINER machine (see PLAY instructions below for how to locate SteamID64):
+      .\install.ps1 -Role Joiner -HostIp <host IP> -HostSteamId <host SteamID64>
 
   (Optional) custom port / key on BOTH machines:
       .\install.ps1 -Role Host   -Port 9050 -ServerKey mygame
-      .\install.ps1 -Role Joiner -HostIp 25.1.2.3 -Port 9050 -ServerKey mygame
+      .\install.ps1 -Role Joiner -HostIp 25.1.2.3 -HostSteamId <host SteamID64> -Port 9050 -ServerKey mygame
 
 The installer auto-detects the game via Steam. If it can't, add:
       -GameDir "C:\path\to\steamapps\common\JUMP KING QUEST"
 
 PLAY
 ----
-1. HOST launches the game first, then enters an ONLINE state (enable invasions /
-   "can be invaded" in the game's online settings so the matchmaker connects).
+1. HOST launches the game first, then enters an ONLINE state (system settings > online type = ONLINE HOST, then create a party in-game).
    The HOST's BepInEx log will show:  CreateClient intercepted -> LanPeer (selfId=...)
    That selfId is the HOST's SteamID64 — give it to the joiner once.
-2. JOINER launches the game and ALSO enters an online state (enable invasions so the
-   game's matchmaker connects — the LAN join only fires once the matchmaker is
-   "Connected"). With HostSteamId set, the joiner auto-joins within a few seconds.
+   Run .\showlog.ps1 or navigate to <game>\BepInEx\LogOutput.log to view logs
+   
+3. JOINER launches the game and ALSO enters an online state (system settings > online type = ONLINE CLIENT, then go in-game). With HostSteamId set, the joiner auto-joins within a few seconds.
    You can also press the JoinKey (default F6) to trigger a join manually.
 
    First time only, set the host's SteamID on the JOINER:

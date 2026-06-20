@@ -8,7 +8,7 @@ traffic is relayed through the host. Each player uses their own real Steam accou
 
 REQUIREMENTS
 ------------
-- Both players own/run JUMP KING QUEST through Steam normally.
+- Both players own/run JUMP KING QUEST through Steam normally. SteaMidra (https://github.com/Midrags/SFF) was the method used during creation. Simply apply the LC Online Fix to JUMP KING QUEST.
 - Both PCs can reach each other over the network:
     * same LAN, OR
     * a VPN like ZeroTier / Tailscale / Hamachi (recommended for over-internet — no

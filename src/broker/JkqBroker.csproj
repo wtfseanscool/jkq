@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <!-- CRITICAL: assembly name must be exactly ChimpWorldMatchmakingServer so it satisfies the
+         game's [InternalsVisibleTo("ChimpWorldMatchmakingServer")] and can use the internal
+         packet types (InvasionJoinRequest, InvasionParticipantRequest, InitialData, etc.). -->
+    <AssemblyName>ChimpWorldMatchmakingServer</AssemblyName>
+    <RootNamespace>JkqBroker</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Description>Embedded ChimpWorld matchmaking broker for the LAN transport (runs inside the game via BepInEx).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="SteamyChimp">
+      <HintPath>..\libs\game-refs\SteamyChimp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ChimpWorldMatchmaking">
+      <HintPath>..\libs\game-refs\ChimpWorldMatchmaking.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ChimpKeeperShared">
+      <HintPath>..\libs\game-refs\ChimpKeeperShared.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

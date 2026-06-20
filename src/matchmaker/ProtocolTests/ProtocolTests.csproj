@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Game assemblies are .NET Framework / Unity Mono; load them under net472 to match. -->
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>ProtocolTests</AssemblyName>
+    <RootNamespace>JkqChimp.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JkqChimpProtocol\JkqChimpProtocol.csproj" />
+  </ItemGroup>
+
+  <!-- Reference the REAL game assemblies to cross-validate our reconstructed wire format. -->
+  <ItemGroup>
+    <Reference Include="ChimpKeeperShared">
+      <HintPath>..\..\libs\game-refs\ChimpKeeperShared.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ChimpWorldMatchmaking">
+      <HintPath>..\..\libs\game-refs\ChimpWorldMatchmaking.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="NexileUtil">
+      <HintPath>..\..\libs\game-refs\NexileUtil.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

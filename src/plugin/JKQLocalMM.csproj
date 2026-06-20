@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- BepInEx 5 Mono targets .NET Framework / Unity Mono. net472 is the standard target. -->
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>JKQLocalMM</AssemblyName>
+    <Description>Redirects JUMP KING QUEST matchmaking to a local/self-hosted ChimpWorld matchmaker for invite-only co-op.</Description>
+    <Version>0.1.0</Version>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- We reference game assemblies that aren't redistributable; never copy them to output. -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Deterministic>true</Deterministic>
+    <RestoreAdditionalProjectSources></RestoreAdditionalProjectSources>
+    <NoWarn>$(NoWarn);CS0436</NoWarn>
+  </PropertyGroup>
+
+  <!-- BepInEx + Harmony core references -->
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>..\libs\BepInEx\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>..\libs\BepInEx\BepInEx\core\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Game assemblies (compile-time only, never copied to output) -->
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\libs\game-refs\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\libs\game-refs\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\libs\game-refs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\libs\game-refs\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SteamyChimp">
+      <HintPath>..\libs\game-refs\SteamyChimp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ChimpWorldMatchmaking">
+      <HintPath>..\libs\game-refs\ChimpWorldMatchmaking.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ChimpWorldMatchmakingClient">
+      <HintPath>..\libs\game-refs\ChimpWorldMatchmakingClient.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Steamworks.NET">
+      <HintPath>..\libs\game-refs\Steamworks.NET.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- The embedded broker library (assembly ChimpWorldMatchmakingServer, has game-internals access). -->
+  <ItemGroup>
+    <ProjectReference Include="..\broker\JkqBroker.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>

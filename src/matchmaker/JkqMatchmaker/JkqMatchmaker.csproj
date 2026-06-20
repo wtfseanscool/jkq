@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- net472 x64: matches the Unity Mono-built game assemblies we reuse and loads the
+         online-fix steam_api64.dll (x64) cleanly without netcore assembly-load quirks. -->
+    <TargetFramework>net472</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>ChimpWorldMatchmakingServer</AssemblyName>
+    <RootNamespace>JkqMatchmaker</RootNamespace>
+    <Description>Invite-only ChimpWorld matchmaker for JUMP KING QUEST co-op, running under online-fix.</Description>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <!-- Reuse the GAME'S OWN networking assemblies so the wire format and SteamID identity
+       handling are guaranteed identical (it is literally the same code the client runs). -->
+  <ItemGroup>
+    <Reference Include="SteamyChimp">
+      <HintPath>..\..\libs\game-refs\SteamyChimp.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ChimpWorldMatchmaking">
+      <HintPath>..\..\libs\game-refs\ChimpWorldMatchmaking.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ChimpKeeperShared">
+      <HintPath>..\..\libs\game-refs\ChimpKeeperShared.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Steamworks.NET">
+      <HintPath>..\..\libs\game-refs\Steamworks.NET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="NexileUtil">
+      <HintPath>..\..\libs\game-refs\NexileUtil.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>JkqChimpProtocol</AssemblyName>
+    <RootNamespace>JkqChimp</RootNamespace>
+    <Description>Reconstructed ChimpWorld matchmaking wire protocol for JUMP KING QUEST.</Description>
+  </PropertyGroup>
+
+</Project>

@@ -1,2 +1,2 @@
 # jkq
-Adds LAN co-op to jkq
+Adds LAN co-op to JUMP KING QUEST
